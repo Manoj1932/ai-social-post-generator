@@ -1,3 +1,23 @@
+function scrollToGenerator(){
+
+document.getElementById("generator")
+.scrollIntoView({behavior:"smooth"})
+
+}
+
+
+
+function useTemplate(topic,platform){
+
+document.getElementById("topic").value = topic
+document.getElementById("platform").value = platform
+
+scrollToGenerator()
+
+}
+
+
+
 async function generate(){
 
 const platform = document.getElementById("platform").value
@@ -26,9 +46,12 @@ tone:tone
 const data = await response.json()
 
 document.getElementById("loading").style.display="none"
+
 document.getElementById("result").innerText=data.content
 
 }
+
+
 
 function copyText(){
 
@@ -37,6 +60,7 @@ const text=document.getElementById("result").innerText
 navigator.clipboard.writeText(text)
 
 const btn=document.querySelector(".copy-btn")
+
 btn.innerText="✅ Copied!"
 
 setTimeout(()=>{
