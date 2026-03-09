@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>🚀 AI Social Media Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚀 AI Social Media Post Generator</h1>
+<p class="subtitle">Generate engaging posts with smart emoji placement</p>
+
+<div class="card">
+
+<div class="row">
+
+<div class="field">
+<label>🌐 Platform</label>
+<select id="platform">
+<option>Instagram</option>
+<option>LinkedIn</option>
+<option>Twitter</option>
+</select>
+</div>
+
+<div class="field">
+<label>📝 Topic</label>
+<input id="topic" placeholder="Example: Coffee shop promotion">
+</div>
+
+<div class="field">
+<label>🎭 Tone</label>
+<select id="tone">
+<option>Friendly</option>
+<option>Professional</option>
+<option>Funny</option>
+</select>
+</div>
+
+</div>
+
+<button class="generate-btn" onclick="generate()">
+⚡ Generate AI Post
+</button>
+
+</div>
+
+<div class="result-card">
+
+<h3>✨ Generated Content</h3>
+
+<div id="loading" class="loading">
+🤖 AI is thinking...
+</div>
+
+<div id="result-box">
+<pre id="result"></pre>
+</div>
+
+<button class="copy-btn" onclick="copyText()">📋 Copy</button>
+
+</div>
+
+<footer>
+Built with ❤️ using AI
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
