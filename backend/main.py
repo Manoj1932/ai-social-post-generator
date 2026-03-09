@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 # API KEY (better to use environment variable later)
-API_KEY = "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"
+API_KEY = os.getenv("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")
 
 
 class PostRequest(BaseModel):
