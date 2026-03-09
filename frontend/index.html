@@ -2,16 +2,44 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<title>🚀 AI Social Media Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🚀 AI Social Media Post Generator</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<div class="container">
+
+<!-- HERO SECTION -->
+
+<section class="hero">
 
 <h1>🚀 AI Social Media Post Generator</h1>
+
+<p>Create viral captions for Instagram, LinkedIn and Twitter instantly.</p>
+
+<button onclick="document.getElementById('generator').scrollIntoView({behavior:'smooth'})">
+⚡ Start Generating
+</button>
+
+</section>
+
+
+
+<!-- GENERATOR TOOL -->
+
+<section id="generator">
+
+<div class="container">
+
+<h2>✨ Generate Your AI Post</h2>
+
 <p class="subtitle">Generate engaging posts with smart emoji placement</p>
 
 <div class="card">
@@ -27,10 +55,12 @@
 </select>
 </div>
 
+
 <div class="field">
 <label>📝 Topic</label>
 <input id="topic" placeholder="Example: Coffee shop promotion">
 </div>
+
 
 <div class="field">
 <label>🎭 Tone</label>
@@ -49,6 +79,8 @@
 
 </div>
 
+
+
 <div class="result-card">
 
 <h3>✨ Generated Content</h3>
@@ -65,13 +97,49 @@
 
 </div>
 
-<footer>
-Built with ❤️ using AI
-</footer>
+</div>
+
+</section>
+
+
+
+<!-- TOOLS GRID -->
+
+<section class="tools">
+
+<h2>Discover More AI Tools</h2>
+
+<div class="grid">
+
+<div class="tool">Instagram Caption Generator</div>
+<div class="tool">LinkedIn Post Generator</div>
+<div class="tool">Twitter Caption Generator</div>
+
+<div class="tool">Motivation Post Generator</div>
+<div class="tool">Restaurant Promotion Post</div>
+<div class="tool">Marketing Caption Generator</div>
+
+<div class="tool">Startup Launch Post</div>
+<div class="tool">Product Promotion Post</div>
+<div class="tool">Brand Announcement Post</div>
 
 </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+Built with ❤️ using AI
+
+</footer>
+
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
