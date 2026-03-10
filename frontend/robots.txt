@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-social-post-generator-psi.vercel.app/sitemap.xml
