@@ -25,6 +25,7 @@
 
 <body>
 
+
 <header class="navbar">
 
 <h2>🚀 AI PostGen</h2>
@@ -94,15 +95,47 @@
 
 </section>
 
+
+
 <section class="seo-content">
 
-<h2>What is AI Instagram Caption Generator?</h2>
+<div class="about-tool">
 
-<p>
-AI Instagram Caption Generator is a free tool that helps you create engaging
-Instagram captions instantly. Just enter your topic and choose a tone,
-and the AI will generate a creative caption with emojis and hashtags.
+<h2>🚀 What is AI Instagram Caption Generator?</h2>
+
+<p class="about-description">
+The AI Instagram Caption Generator is a smart tool that helps you create
+engaging captions for your Instagram posts in seconds. Simply enter your topic,
+choose the tone, and the AI will generate a ready-to-use caption with emojis
+and relevant hashtags to improve your reach.
 </p>
+
+<div class="about-features">
+
+<div class="feature-box">
+<h3>⚡ Instant Captions</h3>
+<p>Create engaging captions instantly without spending time writing.</p>
+</div>
+
+<div class="feature-box">
+<h3>🎯 Smart Hashtags</h3>
+<p>AI suggests hashtags that increase reach and engagement.</p>
+</div>
+
+<div class="feature-box">
+<h3>🎭 Multiple Tones</h3>
+<p>Generate captions in friendly, professional or funny tone.</p>
+</div>
+
+<div class="feature-box">
+<h3>📱 Social Media Optimized</h3>
+<p>Captions designed to perform better on Instagram posts.</p>
+</div>
+
+</div>
+
+</div>
+
 
 <h2>How to Use the Instagram Caption Generator</h2>
 
@@ -113,6 +146,7 @@ and the AI will generate a creative caption with emojis and hashtags.
 <li>Copy and paste it into your Instagram post</li>
 </ol>
 
+
 <h2>Why Use an AI Caption Generator?</h2>
 
 <ul>
@@ -122,28 +156,47 @@ and the AI will generate a creative caption with emojis and hashtags.
 <li>Improve engagement on Instagram</li>
 </ul>
 
+
+
 <h2>Frequently Asked Questions</h2>
 
-<h3>Is this Instagram caption generator free?</h3>
+<div class="faq-container">
+
+<div class="faq-item">
+<button class="faq-question">Is this Instagram caption generator free?</button>
+<div class="faq-answer">
 <p>Yes, the tool is completely free to use.</p>
+</div>
+</div>
 
-<h3>Does it generate hashtags?</h3>
+<div class="faq-item">
+<button class="faq-question">Does it generate hashtags?</button>
+<div class="faq-answer">
 <p>Yes, captions may include relevant hashtags for better reach.</p>
+</div>
+</div>
 
-<h3>Can I use it for business accounts?</h3>
+<div class="faq-item">
+<button class="faq-question">Can I use it for business accounts?</button>
+<div class="faq-answer">
 <p>Yes, the AI captions work for both personal and business Instagram accounts.</p>
+</div>
+</div>
+
+</div>
 
 </section>
+
 
 <footer>
 Built with ❤️ using AI
 </footer>
 
 
+
 <script>
 
-const platform = "Instagram"  // change this per page
-
+const platform = "Instagram"
 
 async function generatePost(){
 
@@ -177,6 +230,7 @@ document.getElementById("result").innerText=data.content
 }
 
 
+
 function copyText(){
 
 const text=document.getElementById("result").innerText
@@ -185,13 +239,39 @@ navigator.clipboard.writeText(text)
 }
 
 
+
 function scrollToGenerator(){
 
 document.getElementById("generator").scrollIntoView({behavior:"smooth"})
 
 }
 
+
+
+/* FAQ TOGGLE */
+
+const faqQuestions = document.querySelectorAll(".faq-question")
+
+faqQuestions.forEach(question => {
+
+question.addEventListener("click", () => {
+
+const answer = question.nextElementSibling
+
+if(answer.style.display === "block"){
+answer.style.display = "none"
+}
+else{
+answer.style.display = "block"
+}
+
+})
+
+})
+
 </script>
+
+
 
 <script type="application/ld+json">
 {
@@ -229,5 +309,7 @@ document.getElementById("generator").scrollIntoView({behavior:"smooth"})
 ]
 }
 </script>
+
+
 </body>
 </html>

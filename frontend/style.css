@@ -230,3 +230,38 @@ margin-top:25px;
 .seo-content ol{
 padding-left:20px;
 }
+
+/* FAQ Section */
+
+.faq-container{
+margin-top:30px;
+}
+
+.faq-item{
+border-bottom:1px solid #ddd;
+}
+
+.faq-question{
+width:100%;
+background:none;
+border:none;
+text-align:left;
+padding:18px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.faq-question:hover{
+color:#ff8c00;
+}
+
+.faq-answer{
+display:none;
+padding:0 18px 18px 18px;
+color:#444;
+line-height:1.6;
+}
