@@ -394,3 +394,19 @@ transition:0.3s;
 background:rgba(255,255,255,0.25);
 transform:translateY(-4px);
 }
+
+/* STATS SECTION */
+
+.stats-section{
+text-align:center;
+margin:40px auto;
+color:white;
+}
+
+.stats-box{
+background:rgba(255,255,255,0.12);
+display:inline-block;
+padding:18px 35px;
+border-radius:12px;
+backdrop-filter:blur(6px);
+}
