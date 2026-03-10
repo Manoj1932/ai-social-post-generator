@@ -71,21 +71,18 @@ btn.innerText="📋 Copy"
 
 // FAQ toggle
 
-const faqQuestions = document.querySelectorAll(".faq-question")
+const faqQuestions = document.querySelectorAll(".faq-question");
 
 faqQuestions.forEach(question => {
+  question.addEventListener("click", () => {
 
-question.addEventListener("click", () => {
+    const answer = question.nextElementSibling;
 
-const answer = question.nextElementSibling
+    if(answer.style.maxHeight){
+      answer.style.maxHeight = null;
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
 
-if(answer.style.display === "block"){
-answer.style.display = "none"
-}
-else{
-answer.style.display = "block"
-}
-
-})
-
-})
+  });
+});
