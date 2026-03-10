@@ -172,11 +172,27 @@ background:rgba(255,255,255,0.12);
 backdrop-filter:blur(12px);
 
 position:relative;
-overflow:hidden;
 
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
-border:1px solid rgba(255,255,255,0.2);
 
+border:2px solid transparent;
+
+background:
+linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)) padding-box,
+linear-gradient(
+90deg,
+#ff0000,
+#ff9900,
+#ffee00,
+#33ff00,
+#00ccff,
+#9933ff,
+#ff0000
+) border-box;
+
+background-size:300% 300%;
+
+animation:borderTravel 6s linear infinite;
 }
 
 .result-card:hover{
@@ -184,54 +200,20 @@ transform:translateY(-4px);
 box-shadow:0 15px 40px rgba(0,0,0,0.25);
 }
 
-.result-card::before{
-content:"";
-position:absolute;
+@keyframes borderTravel{
 
-top:-50%;
-left:-50%;
-
-width:200px;
-height:200px;
-
-background:conic-gradient(
-transparent,
-transparent,
-transparent,
-#00f7ff    
-);
-
-animation:rotateLight 4s linear infinite;
-}
-
-.result-card::after{
-content:"";
-position:absolute;
-
-top:2px;
-left:2px;
-right:2px;
-bottom:2px;
-
-border-radius:14px;
-background:rgba(255,255,255,0.12);
-
-z-index:1;
-}
-
-.result-card *{
-position:relative;
-z-index:2;
-}
-
-@keyframes rotateLight{
 0%{
-transform:rotate(0deg);
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
 }
 
 100%{
-transform:rotate(360deg);
+background-position:200% 50%;
 }
+
 }
 
 /* Result box */
