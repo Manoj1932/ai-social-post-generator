@@ -196,8 +196,8 @@ border-radius:50%;
 
 box-shadow:
 0 0 6px #fff,
-0 0 12px #ff9f43,
-0 0 18px #ff9f43;
+0 0 12px #00eaff,
+0 0 18px #00eaff;
 
 animation:starMove 6s linear infinite;
 }
@@ -232,6 +232,7 @@ top:0;
 left:0;
 }
 }
+
 /* Result box */
 
 #result-box{
