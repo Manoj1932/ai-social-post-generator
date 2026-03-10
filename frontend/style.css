@@ -209,3 +209,24 @@ flex-direction:column;
 }
 
 }
+
+
+.seo-content{
+background:white;
+color:black;
+max-width:900px;
+margin:60px auto;
+padding:40px;
+border-radius:15px;
+line-height:1.8;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.seo-content h2{
+margin-top:25px;
+}
+
+.seo-content ul,
+.seo-content ol{
+padding-left:20px;
+}
