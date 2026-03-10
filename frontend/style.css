@@ -172,11 +172,11 @@ background:rgba(255,255,255,0.12);
 backdrop-filter:blur(12px);
 
 position:relative;
+overflow:hidden;
 
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 border:1px solid rgba(255,255,255,0.2);
 
-overflow:hidden;
 }
 
 .result-card:hover{
@@ -188,48 +188,49 @@ box-shadow:0 15px 40px rgba(0,0,0,0.25);
 content:"";
 position:absolute;
 
-width:8px;
-height:8px;
+top:-50%;
+left:-50%;
 
-background:white;
-border-radius:50%;
+width:200px;
+height:200px;
 
-box-shadow:
-0 0 6px #fff,
-0 0 12px #00eaff,
-0 0 18px #00eaff;
+background:conic-gradient(
+transparent,
+transparent,
+transparent,
+#00f7ff    
+);
 
-animation:starMove 6s linear infinite;
+animation:rotateLight 4s linear infinite;
 }
 
-@keyframes starMove{
+.result-card::after{
+content:"";
+position:absolute;
 
+top:2px;
+left:2px;
+right:2px;
+bottom:2px;
+
+border-radius:14px;
+background:rgba(255,255,255,0.12);
+
+z-index:1;
+}
+
+.result-card *{
+position:relative;
+z-index:2;
+}
+
+@keyframes rotateLight{
 0%{
-top:0;
-left:0;
-}
-
-25%{
-top:0;
-left:100%;
-transform:translateX(-100%);
-}
-
-50%{
-top:100%;
-left:100%;
-transform:translate(-100%,-100%);
-}
-
-75%{
-top:100%;
-left:0;
-transform:translateY(-100%);
+transform:rotate(0deg);
 }
 
 100%{
-top:0;
-left:0;
+transform:rotate(360deg);
 }
 }
 
