@@ -7,4 +7,9 @@
 <priority>1.00</priority>
 </url>
 
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/instagram-caption-generator.html</loc>
+<priority>0.90</priority>
+</url>
+
 </urlset>
