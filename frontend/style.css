@@ -318,8 +318,9 @@ margin-bottom:40px;
 
 .examples-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:25px;
+justify-items:center;
 }
 
 .example-card{
@@ -342,4 +343,19 @@ margin-bottom:12px;
 .example-card span{
 color:#ffd27a;
 font-size:14px;
+}
+
+.example-copy{
+margin-top:10px;
+padding:6px 14px;
+border:none;
+background:#ff9d2d;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+}
+
+.example-copy:hover{
+background:#ff8a00;
 }

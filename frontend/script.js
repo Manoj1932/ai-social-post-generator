@@ -86,3 +86,16 @@ faqQuestions.forEach(question => {
 
   });
 });
+
+function copyExample(btn){
+
+const text = btn.parentElement.querySelector("p").innerText
+navigator.clipboard.writeText(text)
+
+btn.innerText = "Copied!"
+
+setTimeout(()=>{
+btn.innerText = "Copy"
+},2000)
+
+}
