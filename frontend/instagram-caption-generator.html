@@ -298,20 +298,18 @@ const tone = document.getElementById("tone").value
 document.getElementById("loading").style.display="block"
 document.getElementById("result").innerText=""
 
+typingActive = false  //stop typing animation
+
 const response = await fetch("https://ai-social-post-generator-n2ie.onrender.com/generate",{
-
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
-
 body: JSON.stringify({
 platform:platform,
 topic:topic,
 tone:tone
 })
-
 })
 
 const data = await response.json()
@@ -321,25 +319,62 @@ document.getElementById("result").innerText=data.content
 
 }
 
-
-
 function copyText(){
-
 const text=document.getElementById("result").innerText
 navigator.clipboard.writeText(text)
-
 }
-
-
 
 function scrollToGenerator(){
-
 document.getElementById("generator").scrollIntoView({behavior:"smooth"})
+}
+</script>
+
+<script>
+
+const demoTexts = [
+"✨ Your AI caption will appear here...",
+"☕ Morning coffee vibes! Starting the day right.\n#CoffeeLover #MorningVibes",
+"🌅 Chasing sunsets and making memories.\n#SunsetMagic #TravelMoments",
+"💪 Small steps every day lead to big success.\n#Motivation #StayFocused"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let typing = true;
+let typingActive = true;
+
+const resultBox = document.getElementById("result");
+
+function typeEffect(){
+
+if(!typingActive) return;
+
+let currentText = demoTexts[textIndex];
+
+if(typing){
+resultBox.textContent = currentText.substring(0,charIndex++);
+if(charIndex > currentText.length){
+typing = false;
+setTimeout(typeEffect,1500);
+return;
+}
+}else{
+resultBox.textContent = currentText.substring(0,charIndex--);
+if(charIndex < 0){
+typing = true;
+textIndex = (textIndex + 1) % demoTexts.length;
+}
+}
+
+setTimeout(typeEffect,40);
 
 }
 
+typeEffect();
 
+</script>
 
+<script>
 /* FAQ TOGGLE */
 
 const faqQuestions = document.querySelectorAll(".faq-question")

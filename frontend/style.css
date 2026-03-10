@@ -198,6 +198,17 @@ word-wrap:break-word;
 line-height:1.8;
 }
 
+#result::after{
+content:"|";
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
 /* Copy Button */
 
 .copy-btn{
