@@ -4,12 +4,34 @@
 
 <url>
 <loc>https://ai-social-post-generator-psi.vercel.app/</loc>
-<priority>1.00</priority>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/tools.html</loc>
 </url>
 
 <url>
 <loc>https://ai-social-post-generator-psi.vercel.app/instagram-caption-generator.html</loc>
-<priority>0.90</priority>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/linkedin-post-generator.html</loc>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/twitter-caption-generator.html</loc>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/marketing-caption-generator.html</loc>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/startup-launch-post-generator.html</loc>
+</url>
+
+<url>
+<loc>https://ai-social-post-generator-psi.vercel.app/brand-announcement-generator.html</loc>
 </url>
 
 </urlset>
