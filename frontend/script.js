@@ -47,7 +47,7 @@ const data = await response.json()
 
 document.getElementById("loading").style.display="none"
 
-document.getElementById("result").innerText=data.content
+showResult(data.content)
 
 }
 
@@ -66,6 +66,25 @@ btn.innerText="✅ Copied!"
 setTimeout(()=>{
 btn.innerText="📋 Copy"
 },2000)
+
+}
+
+function typeText(text){
+
+let i = 0
+const speed = 20
+const result = document.getElementById("result")
+result.innerText = ""
+
+function typing(){
+if(i < text.length){
+result.innerText += text.charAt(i)
+i++
+setTimeout(typing, speed)
+}
+}
+
+typing()
 
 }
 
@@ -97,5 +116,18 @@ btn.innerText = "Copied!"
 setTimeout(()=>{
 btn.innerText = "Copy"
 },2000)
+
+}
+
+function showResult(text){
+
+const result=document.getElementById("result")
+
+result.style.opacity=0
+
+setTimeout(()=>{
+result.innerText=text
+result.style.opacity=1
+},200)
 
 }
