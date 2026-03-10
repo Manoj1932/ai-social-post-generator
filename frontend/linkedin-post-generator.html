@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>AI LinkedIn Post Generator</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Generate social media content instantly using AI">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<h2>🚀 AI PostGen</h2>
+
+<div class="nav-links">
+<a href="/">Home</a>
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<h1 id="tool-title">AI LinkedIn Post Generator</h1>
+
+<p>Create engaging social media posts instantly using AI</p>
+
+<button onclick="scrollToGenerator()">Generate Content</button>
+
+</section>
+
+
+<section id="generator">
+
+<div class="card">
+
+<div class="row">
+
+<div class="field">
+<label>📝 Topic</label>
+<input id="topic" placeholder="Example: Coffee shop promotion">
+</div>
+
+<div class="field">
+<label>🎭 Tone</label>
+<select id="tone">
+<option>Friendly</option>
+<option>Professional</option>
+<option>Funny</option>
+</select>
+</div>
+
+</div>
+
+<button class="generate-btn" onclick="generatePost()">
+⚡ Generate Content
+</button>
+
+<div id="loading" class="loading">
+⏳ Generating AI content...
+</div>
+
+</div>
+
+
+<div class="result-card">
+
+<h3>✨ Generated Content</h3>
+
+<div id="result-box">
+<pre id="result"></pre>
+</div>
+
+<button class="copy-btn" onclick="copyText()">📋 Copy</button>
+
+</div>
+
+</section>
+
+
+<footer>
+Built with ❤️ using AI
+</footer>
+
+
+<script>
+
+const platform = "LinkedIn"  // change this per page
+
+
+async function generatePost(){
+
+const topic = document.getElementById("topic").value
+const tone = document.getElementById("tone").value
+
+document.getElementById("loading").style.display="block"
+document.getElementById("result").innerText=""
+
+const response = await fetch("https://ai-social-post-generator-n2ie.onrender.com/generate",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body: JSON.stringify({
+platform:platform,
+topic:topic,
+tone:tone
+})
+
+})
+
+const data = await response.json()
+
+document.getElementById("loading").style.display="none"
+document.getElementById("result").innerText=data.content
+
+}
+
+
+function copyText(){
+
+const text=document.getElementById("result").innerText
+navigator.clipboard.writeText(text)
+
+}
+
+
+function scrollToGenerator(){
+
+document.getElementById("generator").scrollIntoView({behavior:"smooth"})
+
+}
+
+</script>
+
+</body>
+</html>
