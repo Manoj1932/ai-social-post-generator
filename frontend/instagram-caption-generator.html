@@ -141,6 +141,7 @@
     font-weight: 900;
     letter-spacing: 2px;
     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -211,6 +212,7 @@
   .h1-line2 {
     display: block;
     background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 50%, var(--neon-cyan) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 30px rgba(255,45,120,0.4));
@@ -242,6 +244,7 @@
     font-size: 28px;
     font-weight: 900;
     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
@@ -281,6 +284,37 @@
     height: 2px;
     background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
     z-index: 2;
+  }
+
+  .gen-card::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(
+  90deg,
+  #00f5ff,
+  #bf00ff,
+  #ff2d78,
+  #00f5ff
+  );
+  background-size:300% 300%;
+  animation:neonMove 6s linear infinite;
+  filter:blur(10px);
+  opacity:0.7;
+  z-index:-1;
+  border-radius:24px;
+  }
+
+  @keyframes neonMove{
+
+  0%{
+  background-position:0% 50%;
+  }
+
+  100%{
+  background-position:300% 50%;
+  }
+
   }
 
   .gen-header {
@@ -833,6 +867,7 @@
     font-size: 20px;
     font-weight: 900;
     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
@@ -865,6 +900,7 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 50%, var(--neon-cyan) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -1218,45 +1254,28 @@
     document.getElementById('loadingZone').classList.add('visible');
     document.getElementById('resultZone').classList.remove('visible');
 
-    const prompt = `You are an elite Instagram caption copywriter. Generate ONE stunning Instagram caption for the following:
-
-Topic: ${topic}
-Tone: ${selectedTone}
-Platform: ${platformLabels[platform]}
-${context ? 'Extra context: ' + context : ''}
-
-Rules:
-- Start with a strong hook line (emoji optional)
-- 2-4 sentences of engaging copy
-- End with a call-to-action or thought-provoking line
-- Add a blank line, then 8-12 highly relevant hashtags (mix of popular and niche)
-- Make it feel HUMAN, not robotic
-- Tone must be ${selectedTone}
-- NO quotation marks around the caption
-
-Output ONLY the caption text with hashtags. Nothing else.`;
-
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("https://ai-social-post-generator-n2ie.onrender.com/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          messages: [{ role: "user", content: prompt }]
+          platform: platform,
+          topic: topic,
+          tone: selectedTone,
+          context: context
         })
       });
       const data = await res.json();
-      const text = data.content?.map(c => c.text || '').join('') || 'Error generating caption. Try again.';
+      const text = data.content || 'Error generating caption.';
 
       document.getElementById('loadingZone').classList.remove('visible');
-      document.getElementById('resultContent').textContent = text;
+      typeResult(text);
       document.getElementById('charCount').textContent = `${text.length} characters`;
       document.getElementById('platformNote').textContent = platformNotes[platform];
       document.getElementById('resultZone').classList.add('visible');
     } catch(e) {
       document.getElementById('loadingZone').classList.remove('visible');
-      document.getElementById('resultContent').textContent = '⚠ Neural engine offline. Check connection and try again.';
+      document.getElementById('resultContent').textContent = '⚠ Neural engine offline.';
       document.getElementById('resultZone').classList.add('visible');
     }
   }
@@ -1327,6 +1346,31 @@ Output ONLY the caption text with hashtags. Nothing else.`;
       animateCount(nums[2], 98, '%');
     }, 600);
   });
+  function typeResult(text){
+
+  const el=document.getElementById("resultContent")
+
+  el.textContent=""
+
+  let i=0
+
+  function typing(){
+
+  if(i<text.length){
+
+  el.textContent+=text.charAt(i)
+
+  i++
+
+  setTimeout(typing,10)
+
+  }
+
+  }
+
+  typing()
+
+  }
 </script>
 </body>
 </html>
