@@ -1046,7 +1046,7 @@
         <div class="gen-header-icon">✦</div>
         <div>
           <div class="gen-header-title">CAPTION GENERATOR</div>
-          <div class="gen-header-sub">Powered by Claude AI Neural Engine</div>
+          <div class="gen-header-sub">Powered by AI Neural Engine</div>
         </div>
       </div>
 
@@ -1155,7 +1155,7 @@
     <div class="money-inner">
       <div class="money-label">◈ CREATOR ECONOMY ◈</div>
       <div class="money-title">Turn Captions Into Cash 💸</div>
-      <div class="money-sub">Brands pay $50–$500 per sponsored post. Better captions = higher engagement = higher rates. Use AI to scale your content, earn faster.</div>
+      <div class="money-sub">Brands pay $50-$500 per sponsored post. Better captions = higher engagement = higher rates. Use AI to scale your content, earn faster.</div>
       <a class="money-btn" href="#">
         ⚡ START EARNING NOW
       </a>
@@ -1275,7 +1275,9 @@
       document.getElementById('resultZone').classList.add('visible');
     } catch(e) {
       document.getElementById('loadingZone').classList.remove('visible');
-      document.getElementById('resultContent').textContent = '⚠ Neural engine offline.';
+      document.getElementById('resultContent').textContent = '⚠ AI server temporarily unavailable. Please try again in a moment.';
+      document.getElementById('charCount').textContent = "";
+      document.getElementById('platformNote').textContent = "";
       document.getElementById('resultZone').classList.add('visible');
     }
   }
