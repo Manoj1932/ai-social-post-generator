@@ -1265,8 +1265,21 @@
           context: context
         })
       });
+
+      if(!res.ok){
+      throw new Error("Server error");  
+      }
+      
       const data = await res.json();
-      const text = data.content || 'Error generating caption.';
+
+      console.log("API Response:", data);
+
+      const text =
+      data.content ||
+      data.caption ||
+      data.result ||
+      data.message ||
+      'Error generating caption.';
 
       document.getElementById('loadingZone').classList.remove('visible');
       typeResult(text);
