@@ -6,7 +6,7 @@ import os
 
 app = FastAPI()
 
-# Enable CORS
+# CORS (allow frontend)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -15,9 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# API KEY (better to use environment variable later)
 API_KEY = os.getenv("GROQ_API_KEY")
-
 
 class PostRequest(BaseModel):
     platform: str
@@ -27,6 +25,9 @@ class PostRequest(BaseModel):
 
 @app.post("/generate")
 def generate_post(data: PostRequest):
+
+    if not API_KEY:
+        return {"error": "GROQ_API_KEY not configured on server"}
 
     prompt = f"""
 You are a social media content creator.
@@ -38,12 +39,12 @@ Topic: {data.topic}
 Tone: {data.tone}
 
 Rules:
-- Use relevant emojis in the caption
-- Make the caption engaging and friendly
+- Use relevant emojis
+- Make caption engaging
 - Add spacing between sentences
 - Include 5 relevant hashtags
 - Do NOT explain anything
-- Just give the post ready to publish
+- Just give the caption
 """
 
     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -57,14 +58,19 @@ Rules:
         "model": "llama-3.3-70b-versatile",
         "messages": [
             {"role": "user", "content": prompt}
-        ]
+        ],
+        "temperature": 0.8
     }
 
-    response = requests.post(url, headers=headers, json=body)
-    result = response.json()
+    try:
+        response = requests.post(url, headers=headers, json=body, timeout=30)
+        result = response.json()
 
-    if "choices" in result:
-        content = result["choices"][0]["message"]["content"]
-        return {"content": content}
-    else:
+        if "choices" in result:
+            content = result["choices"][0]["message"]["content"]
+            return {"content": content}
+
         return {"error": result}
+
+    except Exception as e:
+        return {"error": str(e)}
