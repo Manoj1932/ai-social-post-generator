@@ -1267,14 +1267,29 @@
       });
 
       if(!res.ok){
-      throw new Error("Server error");  
+      throw new Error("Server returned error");  
       }
-      
+
       const data = await res.json();
 
       console.log("API Response:", data);
 
-      const text =
+      let text = "";
+      
+      if(data.content) {
+        text = data.content;
+      } else if (data.caption) {
+        text = data.caption;
+      } else if (data.result) {
+        text = data.result;
+      } else if (data.message) {
+        text = data.message;
+      } else if (typeof data == "string") {
+        text = data;
+      } else {
+        text = "⚠ AI server response format unknown.";
+      }
+
       data.content ||
       data.caption ||
       data.result ||
