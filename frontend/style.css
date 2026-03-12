@@ -168,34 +168,46 @@ margin:30px auto;
 padding:30px;
 border-radius:16px;
 
-background:
-linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)) padding-box,
-linear-gradient(
-90deg,
-#ff0000,
-#ff9900,
-#ffee00,
-#33ff00,
-#00ccff,
-#9933ff,
-#ff0000
-) border-box;
-
-border:2px solid transparent;
-
+background:rgba(255,255,255,0.12);
 backdrop-filter:blur(12px);
 
+position:relative;
+overflow:hidden;
+
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
-
-background-size:300% 300%;
-animation:borderMove 5s linear infinite;
-
-transition:0.3s;
 }
 
-.result-card:hover{
-transform:translateY(-4px);
-box-shadow:0 15px 40px rgba(0,0,0,0.25);
+/* animated border layer */
+
+.result-card::before{
+content:"";
+position:absolute;
+inset:0;
+padding:2px; /* border thickness */
+
+border-radius:16px;
+
+background:linear-gradient(
+90deg,
+#00f7ff,
+#4facfe,
+#a855f7,
+#ff00c8,
+#00f7ff
+);
+
+background-size:300% 300%;
+
+animation:borderMove 4s linear infinite;
+
+/* mask trick to show only border */
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
 }
 
 @keyframes borderMove{
